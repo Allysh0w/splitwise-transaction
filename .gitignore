@@ -11,9 +11,8 @@ src_managed/
 project/target/
 project/boot/
 project/plugins/project/
-.scala_dependenciesgit status
+.scala_dependencies
 .worksheet
 /target
 .idea
-pierre2Api/src/main/resources/
 *.sc
