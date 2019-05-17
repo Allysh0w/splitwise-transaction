@@ -16,8 +16,8 @@ trait GraphHandler extends HandlerTransactions {
 
       import GraphDSL.Implicits._
 
-      val flowTransform: Flow[List[(String, Double)], List[(String, Double)], NotUsed] = Flow.fromFunction(transformTransaction).async
-      val flowProcessTrx: Flow[List[(String, Double)], List[ResultTrx], NotUsed] = Flow.fromFunction(processBalanceTrx)
+      val flowTransform: Flow[List[Trx], List[Trx], NotUsed] = Flow.fromFunction(transformTransaction).async
+      val flowProcessTrx: Flow[List[Trx], List[ResultTrx], NotUsed] = Flow.fromFunction(processBalanceTrx)
 
       Source.single(inputList)  ~> flowTransform ~> flowProcessTrx ~> sink.s
 
