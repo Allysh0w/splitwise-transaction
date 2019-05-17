@@ -1,5 +1,6 @@
 package com.ally.handlers
 
+import akka.NotUsed
 import akka.stream.{ClosedShape, Graph}
 import akka.stream.scaladsl.{Flow, GraphDSL, Keep, Sink, Source}
 import com.ally.contracts.TrxContract.ResultTrx
@@ -15,10 +16,10 @@ trait GraphHandler extends HandlerTransactions {
 
       import GraphDSL.Implicits._
 
-      val flowTransfor = Flow.fromFunction(transformTransaction).async
-      val flowProcessTrx = Flow.fromFunction(processBalanceTrx)
+      val flowTransform: Flow[List[(String, Double)], List[(String, Double)], NotUsed] = Flow.fromFunction(transformTransaction).async
+      val flowProcessTrx: Flow[List[(String, Double)], List[ResultTrx], NotUsed] = Flow.fromFunction(processBalanceTrx)
 
-      Source.single(inputList)  ~> flowTransfor ~> flowProcessTrx ~> sink.s
+      Source.single(inputList)  ~> flowTransform ~> flowProcessTrx ~> sink.s
 
       ClosedShape
     }
