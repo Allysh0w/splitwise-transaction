@@ -1,4 +1,5 @@
 # splitwise-Transaction
+# This solution use GraphDSL from Akka Streams
 
 Dado uma lista de tuplas T = [(k1 -> -v), (k2 -> +v), …], onde **k** é a chave identificadora de usuários de um sistema de pagamento instantâneo e **v** o valor de transações de crédito ou débito neste sistema.
  Considerando que as transações precisam ser enviadas para um sistema externo que cobra por transação processada,
